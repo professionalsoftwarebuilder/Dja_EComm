@@ -1,0 +1,60 @@
+{% load static %}
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+
+<!-- Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+<!-- Carousel -->
+<script src="{% static 'js/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- ProdShow Product Gallery With Image Zoom - jQuery 
+     let op volgorde van links is conform voorbeeld-->
+<script src="{% static 'js/addons/prodShow/zoom-image.js' %}"></script>
+<script src="{% static 'js/addons/prodShow/main.js' %}"></script>
+
+<!-- Voor Dropdown submenu -->
+<script type="text/javascript">
+
+    $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+        // Avoid following the href location when clicking
+        event.preventDefault();
+        // Avoid having the menu to close when clicking
+        event.stopPropagation();
+        // If a menu is already open we close it
+        $('ul.dropdown-menu [data-toggle=dropdown]').parent().removeClass('open');
+        // opening the one you clicked on
+        $(this).parent().addClass('open');
+    });
+    //alert('hallo2');
+</script>
+
+<!-- Initializations -->
+<script type="text/javascript">
+    //alert('hallo3');
+	$(document).ready(function(){
+        // do jQuery
+        //alert('hallo4');
+        //$('#zi-show').zoomImage();
+        //fx.queue(zoomImage);
+        //alert('hallo5');
+
+    })
+    // Animations initialization
+    // Lijkt of deze crasht...
+    new WOW().init();
+    alert('na Wow');
+</script>

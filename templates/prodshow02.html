@@ -1,0 +1,59 @@
+{% load static %}
+
+<!-- #$# begin prodshow -->
+
+<!-- In deze rij de active afbeelding -->
+<!-- 1. Insert the first product image to the gallery -->
+<div class="row " >
+    {% if object.image %}
+    <div class="col-lg-9 col-md-12 h-50 d-inline-block theImage" id="zi-show"  >
+        <img src="{{ object.image.url}}" alt="{{obj.fst_Title}}"
+            style="max-width: 100%; height: auto; " id="zi-show-img"
+            class="img-fluid">
+    </div>
+    <!-- De vergrootglas -->
+    <div class="col-lg-3">
+        <div class="row h-50 d-inline-block">
+            <!-- werd oorspr gebruikt in zoom image -->
+            <div id="zi-showpanel" style="width: 100%; heigth: 100%;" >
+            		{% if object.itm_Brand_id.brd_ImagePath %}
+			        	<img src="{{ object.itm_Brand_id.brd_ImagePath.url }}" class="img-fluid"  style="float: right;" alt="">
+					{% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- In deze div wordt in main.js een carousel achtig ding gedaan -->
+            <!-- <div id="zi-small-img-roll">  -->
+            <table class="table">
+                <tbody>
+                    <tr>
+		                <td>
+							<!-- De hoofdImage als thumbnail toevoegen -->
+	                        <img src="{{ object.image.url }}"
+	                            class="zi-small-img img-fluid"
+	                            style="max-width: 70px; max-height: 70px; overflow: hidden; display: inline-block; border: solid 3px blue"
+	                            alt="Main">
+		                </td>    
+
+                        {% for obj in object.fotoset_set.all %} 
+                        {% if obj.fst_Image %}
+                        <td>
+                        <img src="{{ obj.fst_Image.url }}"
+                            class="zi-small-img img-fluid"
+                            style="max-width: 70px; max-height: 70px; overflow: hidden; display: inline-block;"
+                            alt="">
+                         </td> 
+                         <!-- add 1 voor hoofd image die apart is toegevoegd -->
+                        {% if forloop.counter|add:"1"|divisibleby:3 %}
+		                    </tr>
+		                    <tr>
+	                    {% endif %} {% endif %} {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </div> -->
+        </div>
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# This script does personal backups to a rsync backup server. You will end up
+# with a 7 day rotating incremental backup. The incrementals will go
+# into subdirectories named after the day of the week, and the current
+# full backup goes into a directory called "current"
+# tridge@linuxcare.com
+
+# directory to backup
+BDIR="/home/corbij/Portable/Projects/Python/Django/Prj_Dja_Dev_ECom_DressYourDreams/djecommerce/"
+
+# excludes file - this contains a wildcard pattern per line of files to exclude
+EXCLUDES="$BDIR/rsync-excludes-forsync"
+
+# the name of the backup machine
+BSERVER=blauweklaas.local
+
+# your password on the backup server
+export RSYNC_PASSWORD=Keozeb01
+
+
+########################################################################
+
+BACKUPDIR="templshare/Dja_Ecom_DYD/djecommerce/"
+OPTS="  --exclude-from=$EXCLUDES 
+      -avP --dry-run"
+      
+# Org
+#OPTS="--force --ignore-errors --delete-excluded --exclude-from=$EXCLUDES 
+#      --delete --backup --backup-dir=/$BACKUPDIR -a"
+
+export PATH=$PATH:/bin:/usr/bin:/usr/local/bin
+
+# now the actual transfer
+rsync $OPTS $BDIR $BSERVER::$USER/$BACKUPDIR

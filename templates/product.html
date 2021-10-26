@@ -1,0 +1,142 @@
+{% extends "base.html" %} {% block content %}
+
+<main>
+    <div class="container dark-grey-text" style="heigth: 100%">
+
+       <span class="display-4">{{ object.title }}</span>
+       
+        <!--i- Picture show -->
+        {% include 'prodshow02.html' %}
+
+        <hr>
+
+        <!--1e row after pictures-->
+        <div class="row">
+
+            <!-- Subrows links -->
+            <div class="col-lg-6 col-md-12 ">
+                <div class="row">
+                
+                    <!-- Prijs -->
+                    <div class="col-lg-3 col-md-6">
+                        <p class="lead font-weight-bold">Prijs</p>
+
+                        <p class="lead">
+                            {% if object.discount_price %} <span
+                                class="mr-1"> &euro;
+                                {{object.price }} 
+                                </span> <span> &euro;
+                                {{ object.discount_price }} 
+                                </span> 
+                                {% else %} 
+                                <span>
+                                &euro;{{ object.price }} 
+                                </span> 
+                                {% endif %}
+                        </p>
+                    </div>
+                    <!-- Materiaal -->
+                    <div class="col-lg-3 col-md-6">
+                        <p class="lead font-weight-bold">Materiaal</p>
+                        <p>{{ object.itm_Materiaal }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-12">
+                <p class="lead font-weight-bold">Beschrijving</p>
+                <p>{{ object.description }}</p>
+            </div>
+
+        </div>
+        
+        
+        <div class="row">
+
+            <!-- Subrows links -->
+            <div class="col-lg-6 col-md-12 ">
+                <div class="row">
+                
+                    <!-- Afmetingen -->
+                    <div class="col-lg-3 col-md-6">
+                        <p class="lead font-weight-bold">Afmetingen (lxbxh)</p>
+                        <p>{{ object.itm_Afmetingen }}</p>
+                    </div>
+                    <!-- Voorraad status -->
+                    <div class="col-lg-3 col-md-6">
+                        <p class="lead font-weight-bold">Levertijd (dagen)</p>
+                        <p>{{ object.itm_LeverTijd }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 ">
+                <p class="lead font-weight-bold">
+                    Bijzonderheden</p>
+                <p>{{ object.itm_Pitch }}</p>
+            </div>
+
+        </div>
+        
+        <!-- De knoppen -->
+        <div class="row">
+            {% comment %}
+            <form class="d-flex justify-content-left">
+                <!-- Default input -->
+                <input type="number" value="1"
+                    aria-label="Search" class="form-control"
+                    style="width: 100px">
+                <button class="btn btn-primary btn-md my-0 p"
+                    type="submit">
+                    Add to cart <i
+                        class="fas fa-shopping-cart ml-1"></i>
+                </button>
+
+            </form>
+            {% endcomment %} <a
+                href="{{ object.get_add_to_cart_url }}"
+                class="btn btn-primary btn-md my-0 p"> Add
+                to cart <i class="fas fa-shopping-cart ml-1"></i>
+            </a> <a href="{{ object.get_remove_from_cart_url }}"
+                class="btn btn-danger btn-md my-0 p"> Remove
+                from cart </a>
+
+        </div>
+            <!--Content-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr>
+
+
+
+    <!-- Hier was prodViewer -->
+
+    </div>
+
+</main>
+
+{% endblock content %}

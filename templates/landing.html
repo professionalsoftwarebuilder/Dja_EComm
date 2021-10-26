@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div id="OmObjecten" class="container">
+
+  <section class="d-none d-md-block">
+   
+    <div id="OmObjecten" class="container">
+   
+      <div id="RijEersteBar" class="row">
+        <div id="grootPlaatje" class="col-6">
+            <img src="{% static 'img/DYD/jacobcohen_home2.png' %}" width="524" height="560" alt="Jacob Cohen" class="img-fluid" id="JacobCohen">
+        </div><!--Eerste Col-->
+       <div id="eenHoogPlaatje" class="col-3">
+            <img src="{% static 'img/DYD/abroeken2.png' %}" width="242" height="554" alt="Adriano Godschied broeken" class="img-fluid">
+        </div><!--2e Col-->
+        <div id="tweeKleine" class="col-3 ">
+              <img src="{% static 'img/DYD/facebook4.png' %}" width="260" height="552" alt="Adam logo" class="img-fluid" id="AdamLogo">
+        </div><!--Derede Col-->
+      
+      </div> <!--Rij om alles-->
+  
+     <div id="RijTwedeBar" class="row">
+        <div id="grootPlaatje" class="col-6">
+            <img src="{% static 'img/DYD/j_cohen5.png' %}" width="524" height="249" alt="Jacob Cohen" class="img-fluid" id="JacobCohen">
+        </div><!--Eerste Col-->
+        <div id="eenHoogPlaatje" class="col-3">
+            <img src="{% static 'img/DYD/schoenen-homepage3.png' %}" width="245" height="245" alt="Shoenen" class="img-fluid">
+        </div><!--2e Col-->
+        
+        <div id="tweeKleine" class="col-3 ">
+              <img src="{% static 'img/DYD/adam_logo.jpg' %}" width="260" height="260" alt="Adam logo" class="img-fluid" id="AdamLogo">
+        </div><!--Derede Col-->
+      </div> <!--Rij om alles-->
+  
+  </div>
+  
+  </section>
+
+
+  <section class="d-block d-md-none">
+    <div id="eerstRij" class="row">
+      <div id="grootPlaatje" class="">
+        <div id="" class="row">     
+          <img src=
+            "{% static 'img/DYD/jacobcohen_home2.png' %}" 
+            width="524" height="560" alt="Jacob Cohen" class="img-fluid" id=
+            "JacobCohen" />
+        </div> 
+      
+        <div id="onderGrootPlaatje" class="row">
+
+          <img src="{% static 'img/DYD/j_cohen5.png' %}" width="524" height="249" alt="Jacob Cohen" class="img-fluid" id="JacobCohen2" /></div>      
+      
+        </div>
+      </div>
+      
+      <div id="twedeRij" class="row">
+        <div id="omDeDrieKliene" class="">
+          <div id="" class="row">
+            <div id="eenHoogPlaatje" class="col-6">
+              <div id="" class="row">
+                <img src=
+                  "{% static 'img/DYD/abroeken2.png' %}"
+                  width="242" height="554" alt="Adriano Godschied broeken" class=
+                  "img-fluid" />
+              </div>
+            <div id="" class="row">
+              <img src=
+                "{% static 'img/DYD/schoenen-homepage3.png' %}"
+                width="245" height="245" alt="Adriano Godschied broeken" class=
+                "img-fluid" />
+            </div>
+          </div>
+          <div id="tweeKleine" class="col-6 row">
+            <div id="bovensteKlein" class="row">
+                <img src=
+                  "{% static 'img/DYD/adam_logo.jpg' %}"
+                  width="260" height="260" alt="Adam logo" class="img-fluid" id=
+                  "AdamLogo" />
+            </div>
+            <div id="ondersteKleine" class="row">
+              <img src=
+                "{% static 'img/DYD/facebook4.png' %}"
+                width="260" height="552" alt="Facebook" class="img-fluid" id=
+                "FacebookLogo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+</div>
+{% endblock content %}
