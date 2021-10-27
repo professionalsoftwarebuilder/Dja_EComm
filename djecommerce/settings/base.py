@@ -1,10 +1,24 @@
 import os
+import netifaces
 from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = config('SECRET_KEY')
+
+# Find out what the IP addresses are at run time
+# This is necessary because otherwise Gunicorn will reject the connections
+def ip_addresses():
+    ip_list = []
+    for interface in netifaces.interfaces():
+        addrs = netifaces.ifaddresses(interface)
+        for x in (netifaces.AF_INET, netifaces.AF_INET6):
+            if x in addrs:
+                ip_list.append(addrs[x][0]['addr'])
+    return ip_list
+
+ALLOWED_HOSTS = ip_addresses()
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,3 +103,44 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 THUMBS_JPG = False
 VALID_ORIGINAL_EXT = ['jgp', 'jpeg', 'png', 'gif', 'webp']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'd36551049c9fa29ae2e3942b4b3e2fc8',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = config('AWS_LOCATION')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+TEMP = os.path.join(BASE_DIR, 'temp')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Professional Team <professionalsoftwarebuilders@gmail.com>'
+
+BASE_URL = "http://157.245.64.174"
